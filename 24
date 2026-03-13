@@ -1,4 +1,5 @@
 #include <iostream>
+
 using namespace std;
 
 int main() {
@@ -7,43 +8,109 @@ int main() {
 	const int SIZE = 7;
 	int numbers[SIZE];
 	int option;
+	int summ = 0;
+	int mult = 1;
+	int buff, num1, num2;
+	float num3, num4;
 
 	for (int i = 0; i < SIZE; i++) {
 		cout << "Введите целое число массива: ";
 		cin >> numbers[i];
 	}
-	
+	cout << endl;
+
 	cout << "Настройки массива" << endl;
 	cout << "[1] Cортировка по убыванию" << endl;
-	cout << "[2] Сортировка по возрастанию"<<endl;
-	cout << "[3] Перемножить массив"<<endl;
-	cout << "[4] Сложить массив"<<endl;
-	cout << "[5] Разделить массив"<<endl;
-	cout << "[6] Обнулить массив"<<endl;
-	cout << "[9] Задать новые значения массиву"<<endl;
+	cout << "[2] Сортировка по возрастанию" << endl;
+	cout << "[3] Перемножить массив" << endl;
+	cout << "[4] Сложить массив" << endl;
+	cout << "[5] Разделить массив" << endl;
+	cout << "[6] Обнулить массив" << endl;
+	cout << "[9] Задать новые значения массиву" << endl;
 	cout << "Ввод: ";
 	cin >> option;
+
 	switch (option) {
+		//сортировка по возрастанию
 	case 1:
+		for (int i = 0; i < SIZE;i++) {
+			for (int j = 0; j < SIZE - 1;j++) {
+				if (numbers[j] > numbers[j+1]) {
+					buff = numbers[j];
 
+					numbers[j] = numbers[j + 1];
+					numbers[j + 1] = buff;
+				}
+			}
+		}
+		for (int i = 0; i < SIZE;i++) {
+			cout << numbers[i] << " ";
+		}
+		
 		break;
+		//сортировка по убыванию
 	case 2:
+		for (int i = 0; i < SIZE; i++) {
+			for (int j = 0; j < SIZE - 1; j++) {
+				if (numbers[j] < numbers[j + 1]) {
+					buff = numbers[j];
 
+					numbers[j] = numbers[j + 1];
+					numbers[j + 1] = buff;
+				}
+			}
+		}
+		for (int i = 0; i < SIZE; i++) {
+			cout << numbers[i] << " ";
+		}
 		break;
+		//перемножить массив
 	case 3:
+		cout << "Введите число на которое будет умножаться каждое число массива: ";
+		cin >> num1;
+		for (int i = 0; i < SIZE; i++) {
+			mult =num1 * numbers[i];
+			num2 = mult;
+			cout << num2 << " ";
+		}
 
 		break;
+		//Сложить массив
 	case 4:
-
+		cout << "Введите число на которое будет cкладываться каждое число массива: ";
+		cin >> num1;
+		for (int i = 0; i < SIZE; i++) {
+			mult = num1 + numbers[i];
+			num2 = mult;
+			cout << num2 << " ";
+		}
+	
 		break;
+		//разделить массив
 	case 5:
-
+		cout << "Введите число на которое будет делиться каждое число массива: ";
+		cin >> num1;
+		for (int i = 0; i < SIZE; i++) {
+			num3 = float(numbers[i]) / float(num1);
+			num4 = num3;
+			cout << num4 << " ";
+		}
+		
 		break;
+		//Обнулить массив
 	case 6:
+		for (int i = 0; i < SIZE; i++) {
+			numbers[i] = 0;
+			cout << numbers[i]<<" ";
+		}
 
 		break;
+		//Задать новые значения массива
 	case 9:
-
+		for (int i = 0; i < SIZE; i++) {
+			cout << "Введите целое число массива: ";
+			cin >> numbers[i];
+		}
 		break;
 	}
 }
